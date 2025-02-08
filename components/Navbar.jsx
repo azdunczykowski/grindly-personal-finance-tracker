@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import logo from "../assets/logo.png";
 
-const Navbar = () => {
+const Navbar = ({ session }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const toggleNavbar = () => {
@@ -37,15 +37,21 @@ const Navbar = () => {
             ))}
           </ul>
           <div className="hidden lg:flex justify-center space-x-12 items-center">
-            <a href="ClientMember" className="py-2 px-3 border rounded-md">
-              Sign In
-            </a>
-            <a
-              href="/CreateUser"
-              className="bg-gradient-to-r from-[#0f55da] to-[#0a3c9e] hover:from-[#0a3c9e] hover:to-[#0f55da] transition-all py-2 px-3 rounded-md"
-            >
-              Create an account
-            </a>
+            {session ? (
+              <span>Welcome, {session.user.name}</span>
+            ) : (
+              <>
+                <a href="ClientMember" className="py-2 px-3 border rounded-md">
+                  Sign In
+                </a>
+                <a
+                  href="/CreateUser"
+                  className="bg-gradient-to-r from-[#0f55da] to-[#0a3c9e] hover:from-[#0a3c9e] hover:to-[#0f55da] transition-all py-2 px-3 rounded-md"
+                >
+                  Create an account
+                </a>
+              </>
+            )}
           </div>
           <div className="lg:hidden md-flex flex-col justify-end">
             <button onClick={toggleNavbar}>

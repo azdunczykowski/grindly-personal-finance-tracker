@@ -3,10 +3,11 @@ import { ThemeProvider } from "next-themes";
 import ThemeToggle from "../components/ThemeToggle";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import { getSession } from "@/lib/getSession";
 
 const poppinsFont = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  subsets: ["sans-serif"],
+  subsets: ["latin"],
   variable: "--font-poppins",
 });
 
@@ -15,11 +16,13 @@ export const metadata = {
   description: "Your finance tracker",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const session = await getSession();
+
   return (
     <html lang="en" className="dark">
       <body className={`${poppinsFont.variable} antialiased`}>
-        <Navbar />
+        <Navbar session={session} />
         {children}
       </body>
     </html>
