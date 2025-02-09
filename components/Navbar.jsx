@@ -42,7 +42,7 @@ const Navbar = ({ session }) => {
                 <span>Welcome, {session.user.name}</span>
                 <a
                   href="/api/auth/signout?callbackUrl=/"
-                  className="py-2 px-3 border rounded-md"
+                  className="bg-gradient-to-r from-[#0f55da] to-[#0a3c9e] hover:from-[#0a3c9e] hover:to-[#0f55da] transition-all py-2 px-3 rounded-md"
                 >
                   Logout
                 </a>
@@ -83,7 +83,7 @@ const Navbar = ({ session }) => {
               {session ? (
                 <a
                   href="/api/auth/signout?callbackUrl=/"
-                  className="py-2 px-3 border rounded-md"
+                  className="bg-gradient-to-r from-[#0f55da] to-[#0a3c9e] hover:from-[#0a3c9e] hover:to-[#0f55da] transition-all py-2 px-3 rounded-md"
                 >
                   Logout
                 </a>

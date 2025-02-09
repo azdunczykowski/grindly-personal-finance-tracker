@@ -1,10 +1,20 @@
 import GoogleProvider from "next-auth/providers/google";
 
+console.log("GOOGLE_CLIENT_ID:", process.env.GOOGLE_CLIENT_ID);
+console.log("GOOGLE_SECRET:", process.env.GOOGLE_SECRET);
+
 export const options = {
   providers: [
     GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_SECRET,
       profile(profile) {
         console.log(profile);
+
+        let userRole = "Google User";
+        if (profile?.email == "azdunczykowski@gmail.com") {
+          userRole = "admin";
+        }
 
         return {
           ...profile,
@@ -12,8 +22,6 @@ export const options = {
           role: userRole,
         };
       },
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_SECRET,
     }),
   ],
   callbacks: {
