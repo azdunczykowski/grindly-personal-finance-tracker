@@ -38,14 +38,25 @@ const Navbar = ({ session }) => {
           </ul>
           <div className="hidden lg:flex justify-center space-x-12 items-center">
             {session ? (
-              <span>Welcome, {session.user.name}</span>
+              <>
+                <span>Welcome, {session.user.name}</span>
+                <a
+                  href="/api/auth/signout?callbackUrl=/"
+                  className="py-2 px-3 border rounded-md"
+                >
+                  Logout
+                </a>
+              </>
             ) : (
               <>
-                <a href="ClientMember" className="py-2 px-3 border rounded-md">
-                  Sign In
+                <a
+                  href="/api/auth/signin"
+                  className="py-2 px-3 border rounded-md"
+                >
+                  Login
                 </a>
                 <a
-                  href="/CreateUser"
+                  href="/"
                   className="bg-gradient-to-r from-[#0f55da] to-[#0a3c9e] hover:from-[#0a3c9e] hover:to-[#0f55da] transition-all py-2 px-3 rounded-md"
                 >
                   Create an account
@@ -69,12 +80,29 @@ const Navbar = ({ session }) => {
               ))}
             </ul>
             <div className="flex space-x-6 mt-8">
-              <a className="py-2 px-3 border rounded-md" href="#">
-                Sign In
-              </a>
-              <a className="bg-gradient-to-r from-[#0f55da] to-[#0a3c9e] hover:from-[#0a3c9e] hover:to-[#0f55da] transition-all py-2 px-3 rounded-md">
-                Create an account
-              </a>
+              {session ? (
+                <a
+                  href="/api/auth/signout?callbackUrl=/"
+                  className="py-2 px-3 border rounded-md"
+                >
+                  Logout
+                </a>
+              ) : (
+                <>
+                  <a
+                    className="py-2 px-3 border rounded-md"
+                    href="/api/auth/signin"
+                  >
+                    Login
+                  </a>
+                  <a
+                    className="bg-gradient-to-r from-[#0f55da] to-[#0a3c9e] hover:from-[#0a3c9e] hover:to-[#0f55da] transition-all py-2 px-3 rounded-md"
+                    href="/"
+                  >
+                    Create an account
+                  </a>
+                </>
+              )}
             </div>
           </div>
         )}
