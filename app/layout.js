@@ -4,6 +4,7 @@ import ThemeToggle from "../components/ThemeToggle";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { getSession } from "@/lib/getSession";
+import AuthProvider from "../app/providers/AuthProvider";
 
 const poppinsFont = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -21,10 +22,12 @@ export default async function RootLayout({ children }) {
 
   return (
     <html lang="en" className="dark">
-      <body className={`${poppinsFont.variable} antialiased`}>
-        <Navbar session={session} />
-        {children}
-      </body>
+      <AuthProvider>
+        <body className={`${poppinsFont.variable} antialiased`}>
+          <Navbar session={session} />
+          {children}
+        </body>
+      </AuthProvider>
     </html>
   );
 }
