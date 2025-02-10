@@ -1,3 +1,4 @@
+// filepath: /c:/Users/xbaraan/Desktop/grindly/grindly-personal-finance-tracker/constants/index.jsx
 import { BotMessageSquare } from "lucide-react";
 import { BatteryCharging } from "lucide-react";
 import { Fingerprint } from "lucide-react";
@@ -5,12 +6,13 @@ import { ShieldHalf } from "lucide-react";
 import { PlugZap } from "lucide-react";
 import { GlobeLock } from "lucide-react";
 
-import user1 from "../assets/profile-pictures/user1.jpg";
-import user2 from "../assets/profile-pictures/user2.jpg";
-import user3 from "../assets/profile-pictures/user3.jpg";
-import user4 from "../assets/profile-pictures/user4.jpg";
-import user5 from "../assets/profile-pictures/user5.jpg";
-import user6 from "../assets/profile-pictures/user6.jpg";
+const user1 = "/user1.jpg";
+const user2 = "/user2.jpg";
+const user3 = "/user3.jpg";
+const user4 = "/user4.jpg";
+const user5 = "/user5.jpg";
+const user6 = "/user6.jpg";
+const codeImg = "/code.png";
 
 export const navItems = [
   { label: "Home", href: "#" },
