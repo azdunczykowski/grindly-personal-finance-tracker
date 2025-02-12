@@ -56,7 +56,7 @@ const Navbar = ({ session }) => {
                   Login
                 </a>
                 <a
-                  href="/"
+                  href="/sign-up"
                   className="bg-gradient-to-r from-[#0f55da] to-[#0a3c9e] hover:from-[#0a3c9e] hover:to-[#0f55da] transition-all py-2 px-3 rounded-md"
                 >
                   Create an account
@@ -97,7 +97,7 @@ const Navbar = ({ session }) => {
                   </a>
                   <a
                     className="bg-gradient-to-r from-[#0f55da] to-[#0a3c9e] hover:from-[#0a3c9e] hover:to-[#0f55da] transition-all py-2 px-3 rounded-md"
-                    href="/"
+                    href="/sign-up"
                   >
                     Create an account
                   </a>

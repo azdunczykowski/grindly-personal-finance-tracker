@@ -16,7 +16,7 @@ import { useRouter } from "next/navigation";
 import { TriangleAlert } from "lucide-react";
 import { FcGoogle } from "react-icons/fc";
 
-const SignIn = ({ className, ...props }) => {
+const SignIn = ({ className }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [pending, setPending] = useState(false);
@@ -48,7 +48,7 @@ const SignIn = ({ className, ...props }) => {
   };
 
   return (
-    <div className={cn("flex flex-col gap-6", className)} {...props}>
+    <div className={cn("flex flex-col gap-6", className)}>
       <Card>
         <CardHeader>
           <CardTitle className="text-2xl">Login</CardTitle>

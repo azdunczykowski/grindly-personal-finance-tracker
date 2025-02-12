@@ -16,7 +16,7 @@ import { TriangleAlert } from "lucide-react";
 import { signIn } from "next-auth/react";
 import { FcGoogle } from "react-icons/fc";
 
-const SignUp = ({ className, ...props }) => {
+const SignUp = ({ className }) => {
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -57,7 +57,7 @@ const SignUp = ({ className, ...props }) => {
   };
 
   return (
-    <div className={cn("flex flex-col gap-6", className)} {...props}>
+    <div className={cn("flex flex-col gap-6", className)}>
       <Card>
         <CardHeader>
           <CardTitle className="text-2xl">Create Account</CardTitle>
