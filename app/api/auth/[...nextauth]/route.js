@@ -50,6 +50,7 @@ export const authOptions = {
           await User.create({
             name: profile?.name,
             email: profile?.email,
+            image: profile?.picture, // Dodaj obraz użytkownika
           });
         }
       }
@@ -59,6 +60,8 @@ export const authOptions = {
       if (user) {
         token.id = user.id;
         token.email = user.email;
+        token.name = user.name;
+        token.picture = user.image; // Dodaj obraz użytkownika do tokena
       }
       return token;
     },
@@ -67,7 +70,7 @@ export const authOptions = {
         session.user = {
           email: token.email,
           name: token.name,
-          image: token.picture,
+          image: token.picture, // Dodaj obraz użytkownika do sesji
         };
       }
       return session;
