@@ -14,8 +14,8 @@ const Hero = () => {
       </p>
       <div className="flex justify-center my-10">
         <a
-          className="bg-gradient-to-r from-[#0f55da] to-[#0a3c9e] py-3 px-4 mx-3 rounded-md"
-          href=""
+          className="bg-gradient-to-r from-[#0f55da] to-[#0a3c9e] py-3 px-4 mx-3 rounded-md text-sm"
+          href="/sign-up"
         >
           Start for free!
         </a>

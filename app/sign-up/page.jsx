@@ -58,7 +58,7 @@ const SignUp = ({ className }) => {
   };
 
   return (
-    <div className={cn("flex flex-col gap-6", className)}>
+    <div className="flex flex-col h-screen justify-center max-w-4xl mx-auto px-6">
       <Card>
         <CardHeader>
           <CardTitle className="text-2xl">Create Account</CardTitle>
@@ -80,7 +80,7 @@ const SignUp = ({ className }) => {
                 <Input
                   id="name"
                   type="text"
-                  placeholder="John Doe"
+                  placeholder="Your name"
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                   disabled={pending}
@@ -92,7 +92,7 @@ const SignUp = ({ className }) => {
                 <Input
                   id="email"
                   type="email"
-                  placeholder="m@example.com"
+                  placeholder="email@example.com"
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                   disabled={pending}
@@ -104,6 +104,7 @@ const SignUp = ({ className }) => {
                 <Input
                   id="password"
                   type="password"
+                  placeholder="your password"
                   value={form.password}
                   onChange={(e) =>
                     setForm({ ...form, password: e.target.value })
@@ -117,6 +118,7 @@ const SignUp = ({ className }) => {
                 <Input
                   id="confirmPassword"
                   type="password"
+                  placeholder="confirm your password"
                   value={form.confirmPassword}
                   onChange={(e) =>
                     setForm({ ...form, confirmPassword: e.target.value })
@@ -125,7 +127,11 @@ const SignUp = ({ className }) => {
                   required
                 />
               </div>
-              <Button type="submit" className="w-full" disabled={pending}>
+              <Button
+                type="submit"
+                className="text-white bg-gradient-to-r from-[#0f55da] to-[#0a3c9e] hover:from-[#0a3c9e] hover:to-[#0f55da] transition-all"
+                disabled={pending}
+              >
                 Create Account
               </Button>
               <Button

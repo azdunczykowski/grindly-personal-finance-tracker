@@ -49,7 +49,7 @@ const SignIn = ({ className }) => {
   };
 
   return (
-    <div className={cn("flex flex-col gap-6", className)}>
+    <div className="flex flex-col h-screen justify-center max-w-4xl mx-auto px-6">
       <Card>
         <CardHeader>
           <CardTitle className="text-2xl">Login</CardTitle>
@@ -71,7 +71,7 @@ const SignIn = ({ className }) => {
                 <Input
                   id="email"
                   type="email"
-                  placeholder="m@example.com"
+                  placeholder="email@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   disabled={pending}
@@ -92,13 +92,18 @@ const SignIn = ({ className }) => {
                 <Input
                   id="password"
                   type="password"
+                  placeholder="your password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   disabled={pending}
                   required
                 />
               </div>
-              <Button type="submit" className="w-full" disabled={pending}>
+              <Button
+                type="submit"
+                className="text-white bg-gradient-to-r from-[#0f55da] to-[#0a3c9e] hover:from-[#0a3c9e] hover:to-[#0f55da] transition-all"
+                disabled={pending}
+              >
                 Login
               </Button>
               <Button

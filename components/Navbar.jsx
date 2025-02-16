@@ -1,17 +1,31 @@
 "use client";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { navItems } from "../constants";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "../assets/logo.png";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
-const Navbar = ({ session }) => {
+const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { data: session } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (session) {
+      router.push("/dashboard");
+    }
+  }, [session, router]);
 
   const toggleNavbar = () => {
     setMobileOpen(!mobileOpen);
   };
+
+  const linkClasses = "py-2 px-3 border rounded-md";
+  const buttonClasses =
+    "bg-gradient-to-r from-[#0f55da] to-[#0a3c9e] hover:from-[#0a3c9e] hover:to-[#0f55da] transition-all py-2 px-3 rounded-md text-sm";
 
   return (
     <nav className="sticky top-0 z-50 py-3 backdrop-blur-lg border-b border-neutral-700/80">
@@ -32,37 +46,17 @@ const Navbar = ({ session }) => {
           <ul className="hidden lg:flex ml-14 space-x-12">
             {navItems.map((item, index) => (
               <li key={index}>
-                <a href={item.href}>{item.label}</a>
+                <Link href={item.href}>{item.label}</Link>
               </li>
             ))}
           </ul>
           <div className="hidden lg:flex justify-center space-x-12 items-center">
-            {session ? (
-              <>
-                <span>Welcome, {session.user.name}</span>
-                <a
-                  href="/api/auth/signout?callbackUrl=/"
-                  className="bg-gradient-to-r from-[#0f55da] to-[#0a3c9e] hover:from-[#0a3c9e] hover:to-[#0f55da] transition-all py-2 px-3 rounded-md"
-                >
-                  Logout
-                </a>
-              </>
-            ) : (
-              <>
-                <a
-                  href="/api/auth/signin"
-                  className="py-2 px-3 border rounded-md"
-                >
-                  Login
-                </a>
-                <a
-                  href="/sign-up"
-                  className="bg-gradient-to-r from-[#0f55da] to-[#0a3c9e] hover:from-[#0a3c9e] hover:to-[#0f55da] transition-all py-2 px-3 rounded-md"
-                >
-                  Create an account
-                </a>
-              </>
-            )}
+            <Link href="/sign-in" className={linkClasses}>
+              Login
+            </Link>
+            <Link href="/sign-up" className={buttonClasses}>
+              Create an account
+            </Link>
           </div>
           <div className="lg:hidden md-flex flex-col justify-end">
             <button onClick={toggleNavbar}>
@@ -75,34 +69,17 @@ const Navbar = ({ session }) => {
             <ul>
               {navItems.map((item, index) => (
                 <li className="py-4" key={index}>
-                  <a href={item.href}>{item.label}</a>
+                  <Link href={item.href}>{item.label}</Link>
                 </li>
               ))}
             </ul>
             <div className="flex space-x-6 mt-8">
-              {session ? (
-                <a
-                  href="/api/auth/signout?callbackUrl=/"
-                  className="bg-gradient-to-r from-[#0f55da] to-[#0a3c9e] hover:from-[#0a3c9e] hover:to-[#0f55da] transition-all py-2 px-3 rounded-md"
-                >
-                  Logout
-                </a>
-              ) : (
-                <>
-                  <a
-                    className="py-2 px-3 border rounded-md"
-                    href="/api/auth/signin"
-                  >
-                    Login
-                  </a>
-                  <a
-                    className="bg-gradient-to-r from-[#0f55da] to-[#0a3c9e] hover:from-[#0a3c9e] hover:to-[#0f55da] transition-all py-2 px-3 rounded-md"
-                    href="/sign-up"
-                  >
-                    Create an account
-                  </a>
-                </>
-              )}
+              <Link className={linkClasses} href="/sign-in">
+                Login
+              </Link>
+              <Link className={buttonClasses} href="/sign-up">
+                Create an account
+              </Link>
             </div>
           </div>
         )}

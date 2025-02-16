@@ -1,7 +1,11 @@
-import React from "react";
+import DashboardPage from "./page";
 
 function layout() {
-  return <div>layout</div>;
+  return (
+    <div>
+      <DashboardPage></DashboardPage>
+    </div>
+  );
 }
 
 export default layout;
