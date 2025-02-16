@@ -33,7 +33,7 @@ const SignIn = ({ className }) => {
       password,
     });
     if (res?.ok) {
-      router.push("/");
+      router.push("/dashboard");
       toast.success("Login successful");
     } else if (res?.status === 401) {
       setError("Invalid Credentials");
@@ -45,7 +45,7 @@ const SignIn = ({ className }) => {
 
   const handleGoogleSignIn = (e) => {
     e.preventDefault();
-    signIn("google", { callbackUrl: "/" });
+    signIn("google", { callbackUrl: "/dashboard" });
   };
 
   return (

@@ -54,7 +54,7 @@ const SignUp = ({ className }) => {
 
   const handleGoogleSignIn = (e) => {
     e.preventDefault();
-    signIn("google", { callbackUrl: "/" });
+    signIn("google", { callbackUrl: "/sign-in" });
   };
 
   return (
